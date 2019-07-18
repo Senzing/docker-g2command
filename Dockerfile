@@ -16,5 +16,5 @@ COPY ./rootfs /
 # Runtime execution.
 
 WORKDIR /opt/senzing/g2/python
-ENTRYPOINT ["/app/docker-entrypoint.sh", "python G2Command.py" ]
+ENTRYPOINT ["/app/docker-entrypoint.sh", "python3 G2Command.py" ]
 CMD [""]
