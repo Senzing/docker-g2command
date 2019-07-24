@@ -57,8 +57,6 @@ This repository assumes a working knowledge of:
 
 ### Run docker container
 
-Run the docker container with internal SQLite database and external volume.
-
 1. **Important:**
    Before running `senzing/g2command`,
    run [senzing/init-container](https://github.com/Senzing/docker-init-container) to initialize the database.
