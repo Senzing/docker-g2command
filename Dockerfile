@@ -1,11 +1,11 @@
-ARG BASE_IMAGE=senzing/senzing-base:1.1.0
+ARG BASE_IMAGE=senzing/senzing-base:1.2.0
 FROM ${BASE_IMAGE}
 
-ENV REFRESHED_AT=2019-07-23
+ENV REFRESHED_AT=2019-08-05
 
 LABEL Name="senzing/g2command" \
       Maintainer="support@senzing.com" \
-      Version="1.1.0"
+      Version="1.2.0"
 
 HEALTHCHECK CMD ["/app/healthcheck.sh"]
 
@@ -25,3 +25,4 @@ USER 1001
 
 WORKDIR /opt/senzing/g2/python
 ENTRYPOINT ["/opt/senzing/g2/python/G2Command.py" ]
+CMD ["-c", "/etc/opt/senzing/G2Module.ini"]
