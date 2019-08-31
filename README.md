@@ -10,7 +10,7 @@ This Dockerfile is a wrapper over Senzing's G2Command.py.
     1. [Space](#space)
     1. [Time](#time)
     1. [Background knowledge](#background-knowledge)
-1. [Demonstrate using Docker](#demonstrate-using-docker)
+1. [Demonstrate](#demonstrate)
     1. [Initialize Senzing](#initialize-senzing)
     1. [Configuration](#configuration)
     1. [Volumes](#volumes)
@@ -39,7 +39,7 @@ This repository assumes a working knowledge of:
 
 1. [Docker](https://github.com/Senzing/knowledge-base/blob/master/WHATIS/docker.md)
 
-## Demonstrate using Docker
+## Demonstrate
 
 ### Initialize Senzing
 
