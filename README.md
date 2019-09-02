@@ -10,10 +10,13 @@ This Dockerfile is a wrapper over Senzing's G2Command.py.
     1. [Space](#space)
     1. [Time](#time)
     1. [Background knowledge](#background-knowledge)
-1. [Demonstrate](#demonstrate)
+1. [Demonstrate using Docker](#demonstrate-using-docker)
     1. [Initialize Senzing](#initialize-senzing)
     1. [Configuration](#configuration)
     1. [Volumes](#volumes)
+    1. [Docker network](#docker-network)
+    1. [External database](#external-database)
+    1. [Docker user](#docker-user)
     1. [Run docker container](#run-docker-container)
 1. [Develop](#develop)
     1. [Prerequisite software](#prerequisite-software)
@@ -39,7 +42,7 @@ This repository assumes a working knowledge of:
 
 1. [Docker](https://github.com/Senzing/knowledge-base/blob/master/WHATIS/docker.md)
 
-## Demonstrate
+## Demonstrate using Docker
 
 ### Initialize Senzing
 
@@ -89,23 +92,37 @@ Create a folder for each output directory.
     export SENZING_VAR_DIR=${SENZING_VOLUME}/var
     ```
 
-### Run docker container
+### Docker network
 
-1. :pencil2: If using a docker network, specify docker network.
+:thinking: **Optional:**  Use if docker container is part of a docker network.
+
+1. List docker networks.
    Example:
 
     ```console
     sudo docker network ls
     ```
 
-    Choose value from NAME column of `docker network ls`.
+1. :pencil2: Specify docker network.
+   Choose value from NAME column of `docker network ls`.
+   Example:
 
     ```console
     export SENZING_NETWORK=*nameofthe_network*
+    ```
+
+1. Construct parameter for `docker run`.
+   Example:
+
+    ```console
     export SENZING_NETWORK_PARAMETER="--net ${SENZING_NETWORK}"
     ```
 
-1. :pencil2: If using an external database, specify database.
+### External database
+
+:thinking: **Optional:**  Use if storing data in an external database.
+
+1. :pencil2: Specify database.
    Example:
 
     ```console
@@ -117,21 +134,41 @@ Create a folder for each output directory.
     export DATABASE_DATABASE=G2
     ```
 
-    Construct parameter for `docker run`.
+1. Construct Database URL.
+   Example:
 
     ```console
     export SENZING_DATABASE_URL="${DATABASE_PROTOCOL}://${DATABASE_USERNAME}:${DATABASE_PASSWORD}@${DATABASE_HOST}:${DATABASE_PORT}/${DATABASE_DATABASE}"
+    ```
 
+1. Construct parameter for `docker run`.
+   Example:
+
+    ```console
     export SENZING_DATABASE_URL_PARAMETER="--env SENZING_DATABASE_URL=${SENZING_DATABASE_URL}
     ```
 
-1. Optional:  Run as root.
+### Docker user
+
+:thinking: **Optional:**  The docker container runs as "USER 1001".
+Use if a different userid is required.
+
+1. :pencil2: Identify user.
+   User "0" is root.
    Example:
 
     ```console
     export SENZING_RUNAS_USER="0"
+    ```
+
+1. Construct parameter for `docker run`.
+   Example:
+
+    ```console
     export SENZING_RUNAS_USER_PARAMETER="--user ${SENZING_RUNAS_USER}"
     ```
+
+### Run docker container
 
 1. Run docker container.
    Example:
