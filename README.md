@@ -4,6 +4,10 @@
 
 This Dockerfile is a wrapper over Senzing's G2Command.py.
 
+### Related artifacts
+
+1. [DockerHub](https://hub.docker.com/r/senzing/g2command)
+
 ### Contents
 
 1. [Expectations](#expectations)
