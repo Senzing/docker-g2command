@@ -15,7 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.2.0] - 2019-09-01
 
-### Changed in 1.2.0
+### Added in 1.2.0
 
 - RPM based installation
 
